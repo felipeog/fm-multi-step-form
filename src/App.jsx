@@ -1,11 +1,10 @@
-import { observable } from "@legendapp/state";
 import { useSelector } from "@legendapp/state/react";
 
-const state$ = observable({ fname: "hello", lname: "there" });
+import { store$ } from "./store";
 
 function App() {
   const fullname = useSelector(
-    () => `${state$.fname.get()} ${state$.lname.get()}`,
+    () => `${store$.fname.get()} ${store$.lname.get()}`,
   );
 
   return <div>{fullname}</div>;
