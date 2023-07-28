@@ -7,7 +7,7 @@ function App() {
     () => `${store$.fname.get()} ${store$.lname.get()}`,
   );
 
-  return <div>{fullname}</div>;
+  return <h1>{fullname}</h1>;
 }
 
 export default App;
