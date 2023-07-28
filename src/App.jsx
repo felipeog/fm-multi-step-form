@@ -1,40 +1,14 @@
-import { Formik, Field, Form } from "formik";
+import { observable } from "@legendapp/state";
+import { useSelector } from "@legendapp/state/react";
+
+const state$ = observable({ fname: "hello", lname: "there" });
 
 function App() {
-  return (
-    <div>
-      <h1>Sign Up</h1>
-
-      <Formik
-        initialValues={{
-          firstName: "",
-          lastName: "",
-          email: "",
-        }}
-        onSubmit={(values) => {
-          alert(JSON.stringify(values, null, 2));
-        }}
-      >
-        <Form>
-          <label htmlFor="firstName">First Name</label>
-          <Field id="firstName" name="firstName" placeholder="Jane" />
-
-          <label htmlFor="lastName">Last Name</label>
-          <Field id="lastName" name="lastName" placeholder="Doe" />
-
-          <label htmlFor="email">Email</label>
-          <Field
-            id="email"
-            name="email"
-            placeholder="jane@acme.com"
-            type="email"
-          />
-
-          <button type="submit">Submit</button>
-        </Form>
-      </Formik>
-    </div>
+  const fullname = useSelector(
+    () => `${state$.fname.get()} ${state$.lname.get()}`,
   );
+
+  return <div>{fullname}</div>;
 }
 
 export default App;
