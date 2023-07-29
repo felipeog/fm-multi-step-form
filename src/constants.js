@@ -43,4 +43,15 @@ export const ADDONS = [
   },
 ];
 
-export const RECURRENCE = ["monthly", "yearly"];
+export const RECURRENCE = [
+  {
+    id: "monthly",
+    name: "Monthly",
+    shorthand: "mo",
+  },
+  {
+    id: "yearly",
+    name: "Yearly",
+    shorthand: "yr",
+  },
+];
