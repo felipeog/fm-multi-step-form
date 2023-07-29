@@ -2,9 +2,10 @@ import { observable } from "@legendapp/state";
 import { ObservablePersistLocalStorage } from "@legendapp/state/persist-plugins/local-storage";
 import { persistObservable } from "@legendapp/state/persist";
 
-import { ADDONS, PLANS, RECURRENCE } from "./constants";
+import { ADDONS, PLANS, RECURRENCE, STEPS } from "./constants";
 
 const store$ = observable({
+  step: STEPS[0],
   name: "",
   email: "",
   phone: "",

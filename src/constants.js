@@ -1,3 +1,31 @@
+export const STEPS = [
+  {
+    index: 0,
+    id: "your-info",
+    name: "Your info",
+  },
+  {
+    index: 1,
+    id: "select-plan",
+    name: "Select plan",
+  },
+  {
+    index: 2,
+    id: "add-ons",
+    name: "Add-ons",
+  },
+  {
+    index: 3,
+    id: "summary",
+    name: "Summary",
+  },
+  {
+    index: 4,
+    id: "last",
+    name: "Last",
+  },
+];
+
 export const PLANS = [
   {
     id: "arcade",
@@ -16,6 +44,19 @@ export const PLANS = [
     name: "Pro",
     monthly: 15,
     yearly: 150,
+  },
+];
+
+export const RECURRENCE = [
+  {
+    id: "monthly",
+    name: "Monthly",
+    shorthand: "mo",
+  },
+  {
+    id: "yearly",
+    name: "Yearly",
+    shorthand: "yr",
   },
 ];
 
@@ -40,18 +81,5 @@ export const ADDONS = [
     monthly: 2,
     yearly: 20,
     description: "Custom theme on your profile",
-  },
-];
-
-export const RECURRENCE = [
-  {
-    id: "monthly",
-    name: "Monthly",
-    shorthand: "mo",
-  },
-  {
-    id: "yearly",
-    name: "Yearly",
-    shorthand: "yr",
   },
 ];
