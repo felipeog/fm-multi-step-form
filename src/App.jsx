@@ -1,7 +1,7 @@
 import { useSelector } from "@legendapp/state/react";
 
 import { store$ } from "./store";
-import { Button } from "./components/Button";
+import { Header } from "./components/Header";
 
 function App() {
   const fullname = useSelector(
@@ -9,25 +9,16 @@ function App() {
   );
 
   return (
-    <>
+    <main className="min-h-screen bg-primary-100">
       <h1>{fullname}</h1>
 
-      <Button variant="solid" scheme="regular">
-        solid regular
-      </Button>
-
-      <Button variant="solid" scheme="highlight">
-        solid highlight
-      </Button>
-
-      <Button variant="link" scheme="regular">
-        link regular
-      </Button>
-
-      <Button variant="link" scheme="highlight">
-        link highlight
-      </Button>
-    </>
+      <Header title="Personal info" subtitle="Please, provide your name" />
+      <Header
+        title="Thank you!"
+        subtitle="If you need support, email us"
+        className="text-center"
+      />
+    </main>
   );
 }
 
