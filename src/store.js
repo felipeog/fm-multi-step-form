@@ -1,16 +1,21 @@
-import { configureObservablePersistence } from "@legendapp/state/persist";
 import { observable } from "@legendapp/state";
 import { ObservablePersistLocalStorage } from "@legendapp/state/persist-plugins/local-storage";
 import { persistObservable } from "@legendapp/state/persist";
 
-configureObservablePersistence({
-  persistLocal: ObservablePersistLocalStorage,
-});
+import { ADDONS, PLANS, RECURRENCE } from "./constants";
 
-const store$ = observable({ fname: "hello", lname: "there" });
+const store$ = observable({
+  name: "",
+  email: "",
+  phone: "",
+  plan: PLANS[0],
+  recurrence: RECURRENCE[0],
+  addons: [ADDONS[0], ADDONS[1]],
+});
 
 persistObservable(store$, {
   local: "store",
+  persistLocal: ObservablePersistLocalStorage,
 });
 
 export { store$ };
