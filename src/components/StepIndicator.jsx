@@ -2,7 +2,7 @@ import { tv } from "tailwind-variants";
 
 const card = tv({
   slots: {
-    base: "flex items-center gap-4 uppercase transition-all hover:opacity-90 active:opacity-80",
+    base: "flex items-center gap-4 uppercase transition-all cursor-default",
     text: "flex flex-col text-left text-neutral-100",
     step: "text-xs text-primary-100",
     name: "text-sm font-bold",
@@ -18,15 +18,15 @@ const circle = tv({
   },
 });
 
-export function StepIndicator({ className, number, name, active, ...props }) {
+export function StepIndicator({ className, number, name, active }) {
   return (
-    <button className={slots.base({ className })} {...props}>
+    <div className={slots.base({ className })}>
       <div className={circle({ active: Boolean(active) })}>{number}</div>
 
       <div className={slots.text()}>
         <span className={slots.step()}>Step {number}</span>
         <span className={slots.name()}>{name}</span>
       </div>
-    </button>
+    </div>
   );
 }

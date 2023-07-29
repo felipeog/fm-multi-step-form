@@ -1,7 +1,7 @@
 import { tv } from "tailwind-variants";
 
 const button = tv({
-  base: "transition-all",
+  base: "transition-all capitalize ",
   variants: {
     variant: {
       solid:
@@ -41,9 +41,12 @@ const button = tv({
   },
 });
 
-export function Button({ children, className, variant, scheme, ...props }) {
+export function Button({ children, className, onClick, variant, scheme }) {
   return (
-    <button className={button({ variant, scheme, className })} {...props}>
+    <button
+      className={button({ variant, scheme, className })}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

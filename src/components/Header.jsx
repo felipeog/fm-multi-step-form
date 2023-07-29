@@ -9,9 +9,9 @@ const card = tv({
 });
 const slots = card();
 
-export function Header({ className, title, subtitle, ...props }) {
+export function Header({ className, title, subtitle }) {
   return (
-    <header className={slots.base({ className })} {...props}>
+    <header className={slots.base({ className })}>
       <h1 className={slots.title()}>{title}</h1>
       <h2 className={slots.subtitle()}>{subtitle}</h2>
     </header>

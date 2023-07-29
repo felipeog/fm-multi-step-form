@@ -1,22 +1,16 @@
 import { observable } from "@legendapp/state";
-import { ObservablePersistLocalStorage } from "@legendapp/state/persist-plugins/local-storage";
-import { persistObservable } from "@legendapp/state/persist";
 
 import { ADDONS, PLANS, RECURRENCE, STEPS } from "./constants";
 
 const store$ = observable({
-  step: STEPS[0],
+  step: structuredClone(STEPS[0]),
+  direction: 0,
   name: "",
   email: "",
   phone: "",
-  plan: PLANS[0],
-  recurrence: RECURRENCE[0],
-  addons: [ADDONS[0], ADDONS[1]],
-});
-
-persistObservable(store$, {
-  local: "store",
-  persistLocal: ObservablePersistLocalStorage,
+  plan: structuredClone(PLANS[0]),
+  recurrence: structuredClone(RECURRENCE[0]),
+  addons: [structuredClone(ADDONS[0]), structuredClone(ADDONS[1])],
 });
 
 export { store$ };

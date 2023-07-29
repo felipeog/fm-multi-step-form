@@ -4,7 +4,7 @@ import { StepIndicator } from "./StepIndicator";
 import background from "../assets/bg-sidebar-desktop.svg";
 
 export function Sidebar() {
-  const currentStep = store$.step.get();
+  const currentStep = store$.step.use();
 
   return (
     <nav
@@ -17,7 +17,7 @@ export function Sidebar() {
             <StepIndicator
               number={step.number}
               name={step.name}
-              active={step.id === currentStep.id}
+              active={step.id === currentStep?.id}
             />
           </li>
         ))}

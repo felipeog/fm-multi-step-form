@@ -3,39 +3,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-body {
-  overflow: hidden;
-}
-
-.text {
-  position: absolute;
-  width: 100vw;
-}
-
-.next,
-.prev {
-  top: calc(50% - 20px);
-  position: absolute;
-  background: #f6f6f6;
-  border-radius: 30px;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  user-select: none;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 18px;
-  z-index: 2;
-}
-
-.next {
-  right: 10px;
-}
-
-.prev {
-  left: 10px;
-  transform: scale(-1);
-}
