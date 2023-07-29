@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { Button } from "./components/Button";
 import { StepIndicator } from "./components/StepIndicator";
 
 export function App() {
@@ -20,6 +21,9 @@ export function App() {
         active={number === 2}
         onClick={() => setNumber(2)}
       />
+
+      <Button>Aoba</Button>
+      <Button variant="link">Aoba</Button>
     </main>
   );
 }

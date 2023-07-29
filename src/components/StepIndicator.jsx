@@ -2,7 +2,7 @@ import { tv } from "tailwind-variants";
 
 const card = tv({
   slots: {
-    base: "flex items-center gap-4 uppercase",
+    base: "flex items-center gap-4 uppercase transition-all hover:opacity-90 active:opacity-80",
     text: "flex flex-col text-left text-neutral-100",
     step: "text-xs text-primary-100",
     name: "text-sm font-bold",
