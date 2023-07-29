@@ -40,11 +40,11 @@ const button = tv({
   },
 });
 
-export function Button({ children, variant, scheme, ...props }) {
+export function Button({ children, className, variant, scheme, ...props }) {
   console.log(button({ variant, scheme }));
 
   return (
-    <button className={button({ variant, scheme })} {...props}>
+    <button className={button({ variant, scheme, className })} {...props}>
       {children}
     </button>
   );
