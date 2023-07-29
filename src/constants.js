@@ -1,28 +1,23 @@
 export const STEPS = [
   {
-    index: 0,
     id: "your-info",
     name: "Your info",
+    number: 1,
   },
   {
-    index: 1,
     id: "select-plan",
     name: "Select plan",
+    number: 2,
   },
   {
-    index: 2,
     id: "add-ons",
     name: "Add-ons",
+    number: 3,
   },
   {
-    index: 3,
     id: "summary",
     name: "Summary",
-  },
-  {
-    index: 4,
-    id: "last",
-    name: "Last",
+    number: 4,
   },
 ];
 
