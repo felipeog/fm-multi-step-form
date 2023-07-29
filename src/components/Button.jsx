@@ -41,8 +41,6 @@ const button = tv({
 });
 
 export function Button({ children, className, variant, scheme, ...props }) {
-  console.log(button({ variant, scheme }));
-
   return (
     <button className={button({ variant, scheme, className })} {...props}>
       {children}
