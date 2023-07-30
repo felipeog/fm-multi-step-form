@@ -17,13 +17,11 @@ export function Step3() {
           (prevAddon) => prevAddon.id === addon.id,
         );
 
-        console.log("🚀 ~ store$.addons.set ~ hasAddon:", hasAddon);
-
         if (hasAddon) {
           return prevAddons.filter((prevAddon) => prevAddon.id !== addon.id);
+        } else {
+          return [...prevAddons, addon];
         }
-
-        return [...prevAddons, addon];
       });
     };
   }
