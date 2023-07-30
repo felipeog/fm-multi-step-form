@@ -2,6 +2,7 @@ import { observable } from "@legendapp/state";
 
 import { ADDONS, PLANS, RECURRENCE, STEPS } from "./constants";
 
+// breake in multipe stores?
 const store$ = observable({
   step: structuredClone(STEPS[0]),
   direction: 0,
