@@ -1,6 +1,7 @@
 import { Card } from "../components/Card";
 import { Header } from "../components/Header";
-import { PLANS } from "../constants";
+import { PLANS_LIST } from "../constants/plans";
+import { RECURRENCES } from "../constants/recurrences";
 import { store$ } from "../store";
 import advanced from "../assets/icon-advanced.svg";
 import arcade from "../assets/icon-arcade.svg";
@@ -25,7 +26,7 @@ export function Step2() {
       />
 
       <ul className="grid grid-cols-3 gap-4">
-        {PLANS.map((plan) => (
+        {PLANS_LIST.map((plan) => (
           <li key={plan.id}>
             <Card
               onClick={() => store$.plan.set(plan)}
@@ -33,10 +34,27 @@ export function Step2() {
               className="w-full p-4 text-left"
             >
               <img src={icons[plan.id]} alt={plan.name} />
+
               <p className="mt-10 text-primary-400">{plan.name}</p>
-              <p className="text-sm text-neutral-500">
-                {formatPrice(plan.monthly)}/{selectedRecurrence.shorthand}
-              </p>
+
+              {selectedRecurrence.id === RECURRENCES.monthly.id && (
+                <p className="text-sm text-neutral-500">
+                  {formatPrice(plan.monthly)}/{selectedRecurrence.shorthand}
+                </p>
+              )}
+
+              {selectedRecurrence.id === RECURRENCES.yearly.id && (
+                <>
+                  <p className="text-sm text-neutral-500">
+                    {formatPrice(plan.yearly)}/{selectedRecurrence.shorthand}
+                  </p>
+
+                  <p className="text-xs text-primary-400">
+                    {plan.yearlyFreeMonths} month
+                    {plan.yearlyFreeMonths === 1 ? "" : "s"} free
+                  </p>
+                </>
+              )}
             </Card>
           </li>
         ))}
