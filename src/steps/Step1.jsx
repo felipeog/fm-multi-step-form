@@ -34,7 +34,7 @@ function Step1() {
     form$[name].set(value);
 
     try {
-      fieldSchema[name].validateSync(value); // throws
+      fieldSchema[name].validateSync(value); // throws on error
 
       error$[name].set("");
     } catch (error) {
@@ -42,7 +42,7 @@ function Step1() {
     }
 
     try {
-      formSchema.validateSync(form$.get()); // throws
+      formSchema.validateSync(form$.get()); // throws on error
 
       store$.isFormValid.set(true);
     } catch (error) {
