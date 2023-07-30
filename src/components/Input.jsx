@@ -1,7 +1,7 @@
 import { tv } from "tailwind-variants";
 
 const input = tv({
-  base: "w-full rounded-lg border border-neutral-400 px-4 py-2 outline-none transition-all focus:border-primary-400",
+  base: "w-full rounded-lg border border-neutral-400 px-4 py-2 transition-all focus:border-primary-400",
   variants: {
     error: {
       true: "border-secondary focus:border-secondary",

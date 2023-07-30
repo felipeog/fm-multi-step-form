@@ -1,19 +1,8 @@
-import { tv } from "tailwind-variants";
-
-const card = tv({
-  slots: {
-    base: "mb-8",
-    title: "text-3xl font-bold text-primary-400",
-    subtitle: "mt-2 text-neutral-500",
-  },
-});
-const slots = card();
-
-export function Header({ className, title, subtitle }) {
+export function Header({ title, subtitle }) {
   return (
-    <header className={slots.base({ className })}>
-      <h1 className={slots.title()}>{title}</h1>
-      <h2 className={slots.subtitle()}>{subtitle}</h2>
+    <header className="mb-8 cursor-default">
+      <h1 className="text-3xl font-bold text-primary-400">{title}</h1>
+      <h2 className="mt-2 text-neutral-500">{subtitle}</h2>
     </header>
   );
 }
