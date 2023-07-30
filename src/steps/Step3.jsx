@@ -3,12 +3,11 @@ import { Header } from "../components/Header";
 import { Card } from "../components/Card";
 import { ADDONS_LIST } from "../constants/addons";
 import { store$ } from "../store";
-import { formatPrice } from "../helpers/formatPrice";
+import { priceFormatter } from "../helpers/priceFormatter";
 
 export function Step3() {
   const selectedAddons = store$.addons.use();
   const selectedRecurrence = store$.recurrence.use();
-  const priceKey = selectedRecurrence.id;
 
   function getClickHandler(addon) {
     return () => {
@@ -56,7 +55,11 @@ export function Step3() {
                 </div>
 
                 <p className="text-sm text-primary-300">
-                  +{formatPrice(addon[priceKey])}/{selectedRecurrence.shorthand}
+                  +
+                  {priceFormatter.formatWithRecurrence(
+                    addon,
+                    selectedRecurrence,
+                  )}
                 </p>
               </Card>
             </li>

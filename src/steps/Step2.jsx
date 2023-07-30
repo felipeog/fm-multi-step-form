@@ -6,7 +6,7 @@ import { store$ } from "../store";
 import advanced from "../assets/icon-advanced.svg";
 import arcade from "../assets/icon-arcade.svg";
 import pro from "../assets/icon-pro.svg";
-import { formatPrice } from "../helpers/formatPrice";
+import { priceFormatter } from "../helpers/priceFormatter";
 import { Toggle } from "../components/Toggle";
 
 const icons = {
@@ -42,23 +42,15 @@ export function Step2() {
 
               <p className="mt-10 text-primary-400">{plan.name}</p>
 
-              {selectedRecurrence.id === RECURRENCES.monthly.id && (
-                <p className="text-sm text-neutral-500">
-                  {formatPrice(plan.monthly)}/{selectedRecurrence.shorthand}
-                </p>
-              )}
+              <p className="text-sm text-neutral-500">
+                {priceFormatter.formatWithRecurrence(plan, selectedRecurrence)}
+              </p>
 
               {selectedRecurrence.id === RECURRENCES.yearly.id && (
-                <>
-                  <p className="text-sm text-neutral-500">
-                    {formatPrice(plan.yearly)}/{selectedRecurrence.shorthand}
-                  </p>
-
-                  <p className="text-xs text-primary-400">
-                    {plan.yearlyFreeMonths} month
-                    {plan.yearlyFreeMonths === 1 ? "" : "s"} free
-                  </p>
-                </>
+                <p className="text-xs text-primary-400">
+                  {plan.yearlyFreeMonths} month
+                  {plan.yearlyFreeMonths === 1 ? "" : "s"} free
+                </p>
               )}
             </Card>
           </li>

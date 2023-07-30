@@ -1,7 +1,7 @@
 import { tv } from "tailwind-variants";
 
 import { Header } from "../components/Header";
-import { formatPrice } from "../helpers/formatPrice";
+import { priceFormatter } from "../helpers/priceFormatter";
 import { store$ } from "../store";
 
 const table = tv({
@@ -27,7 +27,7 @@ export function Step4() {
       0,
     );
 
-    return formatPrice(planPrice + addonsPrice);
+    return priceFormatter.format(planPrice + addonsPrice);
   }
 
   return (
@@ -43,7 +43,10 @@ export function Step4() {
             {selectedPlan.name} ({selectedRecurrence.name})
           </p>
           <p className="font-bold text-primary-400">
-            {formatPrice(selectedPlan[priceKey])}/{selectedRecurrence.shorthand}
+            {priceFormatter.formatWithRecurrence(
+              selectedPlan,
+              selectedRecurrence,
+            )}
           </p>
         </div>
 
@@ -53,8 +56,11 @@ export function Step4() {
               <li className={slots.row()} key={selectedAddon.id}>
                 <p className={slots.key()}>{selectedAddon.name}</p>
                 <p className={slots.value()}>
-                  +{formatPrice(selectedAddon[priceKey])}/
-                  {selectedRecurrence.shorthand}
+                  +
+                  {priceFormatter.formatWithRecurrence(
+                    selectedAddon,
+                    selectedRecurrence,
+                  )}
                 </p>
               </li>
             ))}
