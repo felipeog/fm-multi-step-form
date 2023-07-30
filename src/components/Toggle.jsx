@@ -1,7 +1,7 @@
 import { tv } from "tailwind-variants";
 
 const label = tv({
-  base: "transition-all text-neutral-500 text-sm font-bold",
+  base: "transition-all text-neutral-500 text-sm font-bold hover:opacity-90 active:opacity-80",
   variants: {
     active: {
       true: "text-primary-400",
@@ -9,7 +9,7 @@ const label = tv({
   },
 });
 const toggle = tv({
-  base: "transition-all w-10 h-6 bg-primary-400 rounded-full relative before:transition-all before:block before:w-4 before:h-4 before:rounded-full before:absolute before:top-1/2 before:-translate-y-1/2 before:bg-neutral-100",
+  base: "transition-all w-10 h-6 bg-primary-400 rounded-full relative  hover:opacity-90 active:opacity-80 before:transition-all before:block before:w-4 before:h-4 before:rounded-full before:absolute before:top-1/2 before:-translate-y-1/2 before:bg-neutral-100",
   variants: {
     direction: {
       left: "before:left-1",
