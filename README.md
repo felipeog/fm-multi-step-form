@@ -25,8 +25,8 @@ This is a solution to the [Multi-step form challenge on Frontend Mentor](https:/
 Users should be able to:
 
 - [x] Complete each step of the sequence
-- [c] Go back to a previous step to update their selections
-- [v] See a summary of their selections on the final step and confirm their order
+- [x] Go back to a previous step to update their selections
+- [x] See a summary of their selections on the final step and confirm their order
 - [ ] View the optimal layout for the interface depending on their device's screen size
 - [x] See hover and focus states for all interactive elements on the page
 - [ ] Receive form validation messages if:
