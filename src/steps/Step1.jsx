@@ -54,7 +54,7 @@ function Step1() {
     <div>
       <Header
         title="Personal info"
-        subtitle="Please provide your name, email address, and phone number"
+        subtitle="Please provide your name, email address, and phone number."
       />
 
       <form className="flex flex-col gap-6">
