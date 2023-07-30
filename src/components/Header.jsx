@@ -2,7 +2,7 @@ import { tv } from "tailwind-variants";
 
 const card = tv({
   slots: {
-    base: "",
+    base: "mb-8",
     title: "text-3xl font-bold text-primary-400",
     subtitle: "mt-2 text-neutral-500",
   },
