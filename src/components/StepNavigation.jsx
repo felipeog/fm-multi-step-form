@@ -1,4 +1,4 @@
-import { STEPS } from "../constants";
+import { STEPS_LIST } from "../constants/steps";
 import { store$ } from "../store";
 import { Button } from "./Button";
 
@@ -10,12 +10,12 @@ export function StepNavigation() {
     return null;
   }
 
-  const isFirst = currentStep.id === STEPS.at(0).id;
-  const isLast = currentStep.id === STEPS.at(-1).id;
+  const isFirst = currentStep.id === STEPS_LIST.at(0).id;
+  const isLast = currentStep.id === STEPS_LIST.at(-1).id;
 
   // move navigation to a hook?
   function previous() {
-    const previousStep = STEPS.find(
+    const previousStep = STEPS_LIST.find(
       (step) => step.number === currentStep.number - 1,
     );
 
@@ -29,7 +29,7 @@ export function StepNavigation() {
       return;
     }
 
-    const nextStep = STEPS.find(
+    const nextStep = STEPS_LIST.find(
       (step) => step.number === currentStep.number + 1,
     );
 

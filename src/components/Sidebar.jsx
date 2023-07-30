@@ -1,4 +1,4 @@
-import { STEPS } from "../constants";
+import { STEPS_LIST } from "../constants/steps";
 import { store$ } from "../store";
 import { StepIndicator } from "./StepIndicator";
 import background from "../assets/bg-sidebar-desktop.svg";
@@ -12,7 +12,7 @@ export function Sidebar() {
       style={{ backgroundImage: `url(${background})` }}
     >
       <ul className="grid gap-8 p-10">
-        {STEPS.map((step) => (
+        {STEPS_LIST.map((step) => (
           <li key={step.id}>
             <StepIndicator
               number={step.number}
