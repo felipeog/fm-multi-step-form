@@ -5,13 +5,13 @@ import { PLANS_LIST } from "./constants/plans";
 import { RECURRENCES_LIST } from "./constants/recurrences";
 import { STEPS_LIST } from "./constants/steps";
 
-// breake in multipe stores?
+// break in multiple stores?
 const store$ = observable({
   step: structuredClone(STEPS_LIST[0]),
   direction: 0,
   isFormValid: false,
   plan: structuredClone(PLANS_LIST[0]),
-  recurrence: structuredClone(RECURRENCES_LIST[1]),
+  recurrence: structuredClone(RECURRENCES_LIST[0]),
   addons: [structuredClone(ADDONS_LIST[0]), structuredClone(ADDONS_LIST[1])],
 });
 
