@@ -3,19 +3,18 @@ import { observer } from "@legendapp/state/react";
 import * as Yup from "yup";
 
 import { Header } from "../components/Header";
+import { Input } from "../components/Input";
 import { store$ } from "../store";
 
-const formSchema = Yup.object().shape({
+const fieldSchema = {
   name: Yup.string()
     .min(2, "Too Short")
     .max(50, "Too Long")
     .required("This field is required"),
   email: Yup.string().email("Invalid email").required("This field is required"),
-  phone: Yup.string()
-    .min(10, "Too Short")
-    .max(10, "Too Long")
-    .required("This field is required"),
-});
+  phone: Yup.string().required("This field is required"),
+};
+const formSchema = Yup.object().shape(fieldSchema);
 // move to store?
 const form$ = observable({
   name: "",
@@ -30,68 +29,63 @@ const error$ = observable({
 
 function Step1() {
   function handleInputChange(event) {
-    form$.set((prevForm) => {
-      const newForm = {
-        ...prevForm,
-        [event.target.name]: event.target.value,
-      };
+    const { name, value } = event.target;
 
-      try {
-        formSchema.validateSync(newForm); // throws
+    form$[name].set(value);
 
-        store$.isFormValid.set(true);
-        error$.set({
-          name: "",
-          email: "",
-          phone: "",
-        });
-      } catch (error) {
-        store$.isFormValid.set(false);
-        error$.set((prevError) => {
-          return {
-            ...prevError,
-            [event.target.name]: error.message,
-          };
-        });
-      }
+    try {
+      fieldSchema[name].validateSync(value); // throws
 
-      return newForm;
-    });
+      error$[name].set("");
+    } catch (error) {
+      error$[name].set(error.message);
+    }
+
+    try {
+      formSchema.validateSync(form$.get()); // throws
+
+      store$.isFormValid.set(true);
+    } catch (error) {
+      store$.isFormValid.set(false);
+    }
   }
 
   return (
     <div>
       <Header
         title="Personal info"
-        subtitle="Please provide your name, emall address, and phone number"
+        subtitle="Please provide your name, email address, and phone number"
       />
 
-      <form>
-        <label htmlFor="name">Name</label>
-        <input
+      <form className="flex flex-col gap-6">
+        <Input
+          label="Name"
+          placeholder="e.g. Stephen King"
           id="name"
-          name="name"
           type="text"
           onChange={handleInputChange}
           value={form$.name.get()}
+          error={error$.name.get()}
         />
 
-        <label htmlFor="email">Email Address</label>
-        <input
+        <Input
+          label="Email Address"
+          placeholder="e.g. stephenking@lorem.com"
           id="email"
-          name="email"
           type="email"
           onChange={handleInputChange}
           value={form$.email.get()}
+          error={error$.email.get()}
         />
 
-        <label htmlFor="phone">Phone number</label>
-        <input
+        <Input
+          label="Phone number"
+          placeholder="e.g. +1 123 123 123"
           id="phone"
-          name="phone"
           type="text"
           onChange={handleInputChange}
           value={form$.phone.get()}
+          error={error$.phone.get()}
         />
       </form>
     </div>
