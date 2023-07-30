@@ -7,6 +7,7 @@ import advanced from "../assets/icon-advanced.svg";
 import arcade from "../assets/icon-arcade.svg";
 import pro from "../assets/icon-pro.svg";
 import { formatPrice } from "../helpers/formatPrice";
+import { Toggle } from "../components/Toggle";
 
 const icons = {
   advanced,
@@ -17,6 +18,10 @@ const icons = {
 export function Step2() {
   const selectedPlan = store$.plan.use();
   const selectedRecurrence = store$.recurrence.use();
+
+  function setRecurrence(recurrence) {
+    store$.recurrence.set(recurrence);
+  }
 
   return (
     <div>
@@ -59,6 +64,15 @@ export function Step2() {
           </li>
         ))}
       </ul>
+
+      <div className="mt-6 flex h-10 items-center justify-center rounded-lg bg-neutral-200 p-2">
+        <Toggle
+          left={RECURRENCES.monthly}
+          right={RECURRENCES.yearly}
+          selected={selectedRecurrence}
+          setSelected={setRecurrence}
+        />
+      </div>
     </div>
   );
 }
