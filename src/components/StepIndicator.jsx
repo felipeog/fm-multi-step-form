@@ -19,9 +19,11 @@ const circle = tv({
 });
 
 export function StepIndicator({ className, number, name, active }) {
+  const isActive = Boolean(active);
+
   return (
     <div className={slots.base({ className })}>
-      <div className={circle({ active: Boolean(active) })}>{number}</div>
+      <div className={circle({ active: isActive })}>{number}</div>
 
       <div className={slots.text()}>
         <span className={slots.step()}>Step {number}</span>

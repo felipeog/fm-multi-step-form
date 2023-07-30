@@ -10,11 +10,10 @@ const card = tv({
 });
 
 export function Card({ children, className, active, onClick }) {
+  const isActive = Boolean(active);
+
   return (
-    <button
-      className={card({ active: Boolean(active), className })}
-      onClick={onClick}
-    >
+    <button className={card({ active: isActive, className })} onClick={onClick}>
       {children}
     </button>
   );
