@@ -1,8 +1,11 @@
 import { Header } from "../components/Header";
 import { Input } from "../components/Input";
+import { useNavigation } from "../hooks/useNavigation";
 import { store$ } from "../store";
 
 export function Step1() {
+  const { next } = useNavigation();
+
   const values = store$.form.values.use();
   const errors = store$.form.errors.use();
 
@@ -12,6 +15,12 @@ export function Step1() {
     store$.form.values[name].set(value);
   }
 
+  function handleFormSubmit(event) {
+    event.preventDefault();
+
+    next();
+  }
+
   return (
     <div>
       <Header
@@ -19,7 +28,7 @@ export function Step1() {
         subtitle="Please provide your name, email address, and phone number."
       />
 
-      <form className="flex flex-col gap-6">
+      <form className="flex flex-col gap-6" onSubmit={handleFormSubmit}>
         <Input
           label="Name"
           placeholder="e.g. Stephen King"
@@ -49,6 +58,8 @@ export function Step1() {
           value={values.phone}
           error={errors.phone}
         />
+
+        <button type="submit" className="hidden"></button>
       </form>
     </div>
   );
