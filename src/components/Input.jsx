@@ -1,5 +1,14 @@
+import { AnimatePresence, motion } from "framer-motion";
 import { tv } from "tailwind-variants";
 
+const variants = {
+  initial: {
+    opacity: 0,
+  },
+  enter: {
+    opacity: 1,
+  },
+};
 const input = tv({
   base: "w-full rounded-lg border border-neutral-400 px-4 py-2 transition-all focus:border-primary-400",
   variants: {
@@ -27,9 +36,19 @@ export function Input({
           {label}
         </label>
 
-        {hasError && (
-          <span className="text-sm font-bold text-secondary">{error}</span>
-        )}
+        <AnimatePresence>
+          {hasError && (
+            <motion.span
+              className="text-sm font-bold text-secondary"
+              variants={variants}
+              initial="initial"
+              animate="enter"
+              exit="initial"
+            >
+              {error}
+            </motion.span>
+          )}
+        </AnimatePresence>
       </div>
 
       <input
