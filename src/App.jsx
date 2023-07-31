@@ -15,6 +15,13 @@ export const App = () => {
         position="bottom-left"
         hideProgressBar
         draggable={false}
+        closeButton={false}
+        toastClassName={() => {
+          return "relative flex p-1 min-h-10 rounded-lg justify-between overflow-hidden cursor-pointer bg-neutral-100 shadow-md";
+        }}
+        bodyClassName={() => {
+          return "text-sm block p-3 text-primary-400 flex gap-1";
+        }}
       />
     </div>
   );
