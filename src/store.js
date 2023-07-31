@@ -1,4 +1,5 @@
 import { observable } from "@legendapp/state";
+import { toast } from "react-toastify";
 
 import { RECURRENCES_LIST } from "./constants/recurrences";
 import { STEPS_LIST } from "./constants/steps";
@@ -15,5 +16,7 @@ const store$ = observable({
   recurrence: structuredClone(RECURRENCES_LIST[0]),
   step: structuredClone(STEPS_LIST[0]),
 });
+
+store$.step.onChange(() => toast.dismiss());
 
 export { store$ };
