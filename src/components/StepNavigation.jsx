@@ -1,10 +1,10 @@
 import { STEPS_LIST } from "../constants/steps";
+import { stepValidator } from "../helpers/stepValidator";
 import { store$ } from "../store";
 import { Button } from "./Button";
 
 export function StepNavigation() {
   const currentStep = store$.step.use();
-  const isFormValid = store$.isFormValid.use();
 
   if (!currentStep) {
     return null;
@@ -12,6 +12,7 @@ export function StepNavigation() {
 
   const isFirst = currentStep.id === STEPS_LIST.at(0).id;
   const isLast = currentStep.id === STEPS_LIST.at(-1).id;
+  const validateStep = stepValidator[currentStep.id];
 
   // move navigation to a hook?
   function previous() {
@@ -24,8 +25,8 @@ export function StepNavigation() {
   }
 
   function next() {
-    if (isFirst && !isFormValid) {
-      // render toast?
+    if (!validateStep(store$)) {
+      // put side-effect here?
       return;
     }
 

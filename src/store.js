@@ -1,17 +1,19 @@
 import { observable } from "@legendapp/state";
 
-import { ADDONS_LIST } from "./constants/addons";
-import { PLANS_LIST } from "./constants/plans";
 import { RECURRENCES_LIST } from "./constants/recurrences";
 import { STEPS_LIST } from "./constants/steps";
+import { ERRORS, VALUES } from "./constants/form";
 
 const store$ = observable({
-  step: structuredClone(STEPS_LIST[0]),
+  addons: [],
   direction: 0,
-  isFormValid: false,
-  plan: structuredClone(PLANS_LIST[0]),
+  form: {
+    values: structuredClone(VALUES),
+    errors: structuredClone(ERRORS),
+  },
+  plan: null,
   recurrence: structuredClone(RECURRENCES_LIST[0]),
-  addons: [structuredClone(ADDONS_LIST[0]), structuredClone(ADDONS_LIST[1])],
+  step: structuredClone(STEPS_LIST[0]),
 });
 
 export { store$ };

@@ -47,7 +47,7 @@ export function Step2() {
           <li key={plan.id}>
             <Card
               onClick={() => store$.plan.set(plan)}
-              active={plan.id === selectedPlan.id}
+              active={plan.id === selectedPlan?.id}
               className="w-full p-4 text-left"
             >
               <img src={icons[plan.id]} alt={plan.name} />
