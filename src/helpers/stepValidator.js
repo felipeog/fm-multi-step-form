@@ -1,8 +1,12 @@
 import * as Yup from "yup";
-import { toast } from "react-toastify";
 
 import { STEPS } from "../constants/steps";
 import { ERRORS } from "../constants/form";
+
+const SUCCESS = {
+  success: true,
+  error: null,
+}
 
 function step1(store$) {
   const fieldSchema = {
@@ -25,9 +29,8 @@ function step1(store$) {
     formSchema.validateSync(store$.form.values.get(), {
       abortEarly: false,
     });
-    store$.form.errors.set(structuredClone(ERRORS));
 
-    return true;
+    return SUCCESS;
   } catch (error) {
     const validationErrors = error.inner.reduce((acc, cur) => {
       if (!acc[cur.path]) {
@@ -37,31 +40,32 @@ function step1(store$) {
       return acc;
     }, structuredClone(ERRORS));
 
-    // move side-effects?
-    store$.form.errors.set(validationErrors);
-    toast.error("Check the form", {
-      toastId: "form-error",
-    });
-
-    return false;
+    return {
+      success: false,
+      error: {
+        message: "Invalid form",
+        payload: validationErrors,
+      },
+    };
   }
 }
 
 function step2(store$) {
   if (!store$.plan.get()) {
-    // move side-effect?
-    toast.error("Select a plan", {
-      toastId: "plan-error",
-    });
-
-    return false;
+    return {
+      success: false,
+      error: {
+        message: "No plan selected",
+        payload: null,
+      },
+    };
   }
 
-  return true;
+  return SUCCESS;
 }
 
 function noValidation() {
-  return true;
+  return SUCCESS;
 }
 
 export const stepValidator = {
