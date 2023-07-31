@@ -1,10 +1,10 @@
 import { STEPS_LIST } from "../constants/steps";
-import { store$ } from "../store";
+import { useNavigation } from "../hooks/useNavigation";
 import { StepIndicator } from "./StepIndicator";
 import background from "../assets/bg-sidebar-desktop.svg";
 
 export function Sidebar() {
-  const currentStep = store$.step.use();
+  const { currentStep } = useNavigation();
 
   return (
     <nav

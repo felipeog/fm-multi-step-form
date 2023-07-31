@@ -8,6 +8,7 @@ import { Step2 } from "../steps/Step2";
 import { Step3 } from "../steps/Step3";
 import { Step4 } from "../steps/Step4";
 import { FinalStep } from "../steps/FinalStep";
+import { useNavigation } from "../hooks/useNavigation";
 
 const variants = {
   enter: (direction) => {
@@ -58,7 +59,7 @@ function MotionDiv({ children, direction }) {
 }
 
 export function Steps() {
-  const currentStep = store$.step.use();
+  const { currentStep } = useNavigation();
   const currentDirection = store$.direction.use();
 
   return (

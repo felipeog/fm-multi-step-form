@@ -5,7 +5,7 @@ export function StepNavigation() {
   const { currentStep, isFirst, isLast, previous, next, confirm } =
     useNavigation();
 
-  if (!currentStep) {
+  if (!currentStep?.id) {
     return null;
   }
 
