@@ -43,7 +43,7 @@ export function Step1() {
           label="Email Address"
           placeholder="e.g. stephenking@lorem.com"
           id="email"
-          type="email"
+          type="text"
           onChange={handleInputChange}
           value={values.email}
           error={errors.email}
