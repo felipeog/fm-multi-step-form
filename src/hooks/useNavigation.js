@@ -1,11 +1,12 @@
 import { useCallback } from "react";
+import { useSelector } from "@legendapp/state/react";
 
 import { store$ } from "../store";
 import { STEPS_LIST } from "../constants/steps";
 import { stepValidator } from "../helpers/stepValidator";
 
 export function useNavigation() {
-  const currentStep = store$.step.get() ?? {};
+  const currentStep = useSelector(store$.step) ?? {};
   const isFirst = currentStep.id === STEPS_LIST.at(0).id;
   const isLast = currentStep.id === STEPS_LIST.at(-1).id;
   const validateStep = stepValidator[currentStep.id];
