@@ -39,7 +39,9 @@ function step1(store$) {
 
     // move side-effects?
     store$.form.errors.set(validationErrors);
-    toast.error("Check the form");
+    toast.error("Check the form", {
+      toastId: "form-error",
+    });
 
     return false;
   }
@@ -48,7 +50,9 @@ function step1(store$) {
 function step2(store$) {
   if (!store$.plan.get()) {
     // move side-effect?
-    toast.error("Select a plan");
+    toast.error("Select a plan", {
+      toastId: "plan-error",
+    });
 
     return false;
   }
