@@ -37,7 +37,7 @@ export function Step4() {
         subtitle="Double-check everything looks OK before confirming."
       />
 
-      <div className="rounded-lg bg-neutral-200 p-4 text-left">
+      <div className="rounded-lg bg-neutral-200 p-4 text-left cursor-default">
         <div className={slots.row()}>
           <p className="text-primary-400">
             {selectedPlan.name} ({selectedRecurrence.name})
@@ -68,7 +68,7 @@ export function Step4() {
         )}
       </div>
 
-      <div className="flex items-center justify-between p-4 text-primary-400">
+      <div className="flex items-center justify-between p-4 text-primary-400 cursor-default">
         <p className={slots.key()}>Total ({selectedRecurrence.description})</p>
         <p className="text-lg font-bold text-primary-300">
           {getTotal()}/{selectedRecurrence.shorthand}
