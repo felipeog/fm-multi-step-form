@@ -46,6 +46,7 @@ export function Step2() {
                 {priceFormatter.formatWithRecurrence(plan, selectedRecurrence)}
               </p>
 
+              {/* animate mount/unmount */}
               {selectedRecurrence.id === RECURRENCES.yearly.id && (
                 <p className="text-xs text-primary-400">
                   {plan.yearlyFreeMonths} month
