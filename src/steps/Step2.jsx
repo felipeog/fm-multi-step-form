@@ -1,3 +1,5 @@
+import { motion, AnimatePresence } from "framer-motion";
+
 import { Card } from "../components/Card";
 import { Header } from "../components/Header";
 import { PLANS_LIST } from "../constants/plans";
@@ -13,6 +15,16 @@ const icons = {
   advanced,
   arcade,
   pro,
+};
+const variants = {
+  initial: {
+    opacity: 0,
+    height: 0,
+  },
+  enter: {
+    opacity: 1,
+    height: "auto",
+  },
 };
 
 export function Step2() {
@@ -46,13 +58,20 @@ export function Step2() {
                 {priceFormatter.formatWithRecurrence(plan, selectedRecurrence)}
               </p>
 
-              {/* animate mount/unmount */}
-              {selectedRecurrence.id === RECURRENCES.yearly.id && (
-                <p className="text-xs text-primary-400">
-                  {plan.yearlyFreeMonths} month
-                  {plan.yearlyFreeMonths === 1 ? "" : "s"} free
-                </p>
-              )}
+              <AnimatePresence>
+                {selectedRecurrence.id === RECURRENCES.yearly.id && (
+                  <motion.p
+                    className="text-xs text-primary-400"
+                    variants={variants}
+                    initial="initial"
+                    animate="enter"
+                    exit="initial"
+                  >
+                    {plan.yearlyFreeMonths} month
+                    {plan.yearlyFreeMonths === 1 ? "" : "s"} free
+                  </motion.p>
+                )}
+              </AnimatePresence>
             </Card>
           </li>
         ))}
