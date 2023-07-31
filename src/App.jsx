@@ -1,3 +1,5 @@
+import { ToastContainer } from "react-toastify";
+
 import { Sidebar } from "./components/Sidebar";
 import { Steps } from "./components/Steps";
 
@@ -8,6 +10,12 @@ export const App = () => {
         <Sidebar />
         <Steps />
       </main>
+
+      <ToastContainer
+        position="bottom-left"
+        hideProgressBar
+        draggable={false}
+      />
     </div>
   );
 };
